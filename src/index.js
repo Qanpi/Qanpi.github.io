@@ -2,101 +2,87 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import Editor from "./components/editor/editor";
+import MainPage from "./components/mainPage/mainPage.js";
 
-function TabBar({ titles }) {
+function Tabs({ titles, onTabOpen, onTabClose }) {
   const tabs = titles.map((t, i) => (
-    <div key={t} className="tab">
-      {t}
+    <div key={t} className="tab" onClick={() => onTabOpen(t)}>
+      <span>{t}</span>
+      <button onClick={ev => onTabClose(ev, t)}>X</button>
     </div>
   ));
 
   return <div className="tab-bar">{tabs}</div>;
 }
 
-function Folder({ name, titles }) {
-  const items = titles.map((t, i) => (
-    <p key={t} className="file">
-      {t}
-    </p>
-  ));
+function Window() {
+  const [currentPage, setCurrentPage] = useState("main");
+  const [tabs, setTabs] = useState([currentPage]);
 
-  return (
-    <div className={name}>
-      <p className="folder">{name}/</p>
-      {items}
-    </div>
-  );
-}
-
-function Spacer({n}) {
-  return (
-    Array(n).fill(<p><br /></p>)
+  useEffect(
+    () => console.log(tabs),
+    [tabs]
   )
-}
 
-function SelfTypingText({text}) {
-  return (
-    
-  )
-}
+  const Pages = Object.freeze({
+    "main": MainPage(handleLinkClick),
+    "inception.java": MainPage(handleLinkClick)
+  })
 
-function Editor() {
-  const MAX_LINES = 100; //calculate dynamically
-  const [cursorPosition, setCursorPosition] = useState()
+  function handleLinkClick(address) {
+    if (!(address in Pages)) return;
+    console.log("fired")
 
-  function handleMouseMove(ev) {
-    console.log(ev)
-    console.log(this)
-    setCursorPosition(ev.pageY)
+    setCurrentPage(address);
+
+    if (tabs.includes(address)) {
+      return;
+    }
+
+    const nextTabs = tabsOpen => [...tabsOpen, address];
+    setTabs(nextTabs);
   }
 
-  useEffect(() =>
-    window.addEventListener("scroll", handleMouseMove)
-  )
+  function handleTabClose(ev, address) {
+    ev.stopPropagation(); //prevent handleLinkClick from firing simultaneously
+
+    //TODO: add rickroll
+    setCurrentPage(tabs[tabs.indexOf(address)-1])
+
+    const nextTabs = tabs => tabs.filter(t => t !== address)
+    setTabs(nextTabs); 
+  }
 
   return (
-    <div className="editor">
-      <div className="side-panel">
-        {Array.from({ length: MAX_LINES }, (_, i) => (
-          <p key={i}>
-            {i + 1}
-          </p>
-        ))}
-      </div>
+    <>
+      <Tabs titles={tabs} onTabOpen={handleLinkClick} onTabClose={handleTabClose}/>
 
-      <div className="text-field">
-        <div className="highlight" style={{top: cursorPosition}}></div>
-          <p> hello world, I am aleksei. </p>
-          <Spacer n={3}/>
-          <Folder name="portfolio" titles={["inception.java", "..."]} />
-          <Spacer n={1}/>
-          <Folder name="experience" titles={["nordea.txt", "test.cpp"]} />
-          <Spacer n={1}/>
-          <Folder name="contacts" titles={["nordea.txt", "test.cpp"]} />
+      {Pages[currentPage]} 
+
+      <div className="footer">
+        <div className="guide">
+          <span>NORMAL</span>
+        </div>
+        <div className="decor">
+          <span>unix | netrw</span>
+          <div>
+            <span>xx%</span>
+          </div>
+          <div>
+            <span>x:x</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <TabBar titles={["about me", "portfolio", "experience", "contacts"]} />
-    <Editor />
-    <div className="footer">
-      <div class="guide">
-        <span>NORMAL</span>
-      </div>
-      <div class="decor">
-        <span>unix | netrw</span>
-        <div>
-          <span>xx%</span>
-        </div>
-        <div>
-          <span>x:x</span>
-        </div>
-      </div>
-    </div>
+    <Window />
   </React.StrictMode>
 );
 

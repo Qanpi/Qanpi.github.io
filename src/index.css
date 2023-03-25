@@ -1,7 +1,6 @@
-html, body { /*html needed for rem*/
+body { 
   margin: 0;
   font-family: InputMono, "Cascadia Mono", Courier, monospace;
-  font-size: 62px;
   background: blue;
 }
 
@@ -31,55 +30,15 @@ html, body { /*html needed for rem*/
 
   display: flex;
   border-radius: 10px 10px 0 0;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.editor {
-  display: grid;
-  grid-template-columns: 4em 1fr;
-}
-
-.text-field p {
-  line-height: 1.5rem;
-  height: 1.5rem;
-  font-size: 1.4rem;
-  display: block;
-}
-
-.text-field p:hover {
-  background:lightblue;
-}
-
-.editor p {
-  margin: 0;
-}
-
-.file {
-  padding-left: 1em;
-  height: 1em;
-  color:black;
-}
-
-.folder {
-  color: cyan;
-}
-
-.side-panel {
-  margin: 0;
-  padding: 0 1em 0 0;
-  text-align: right;
-  overflow: hidden;
-  line-height: 1.5rem;
-}
-
-.highlight {
-  display: none;
-  width:100vw;
-  height:1em;
-  background: lightblue;
-  opacity: 0.5;
-  position: absolute;
+.tab button {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: 30%;
 }
 
 .footer {
@@ -107,3 +66,4 @@ html, body { /*html needed for rem*/
   display: flex;
   gap: 30px;
 }
+
