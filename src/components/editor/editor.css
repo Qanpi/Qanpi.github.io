@@ -30,7 +30,7 @@
 }
 
 .line p:hover {
-  background: var(--nvim-gray)
+  background: var(--nvim-gray);
 }
 
 .line p {
@@ -42,7 +42,7 @@
   min-width: 1.5em;
   text-align: right;
   font-size: 0.9em;
-  color: var(--nvim-gray)
+  color: var(--nvim-gray);
 }
 
 .file {
@@ -58,7 +58,7 @@
 }
 
 .folder {
-  color: var(--nvim-blue)
+  color: var(--nvim-blue);
 }
 
 .file:hover {
