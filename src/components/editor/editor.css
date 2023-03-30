@@ -1,43 +1,72 @@
-.type-animation {
-  color: orange;
+.editor {
+  font-size: 60px;
+  line-height: 1.5em;
+  padding-top: 15vmin;
+  min-height: 100vh;
 }
 
+@media screen and (max-width: 1000px) {
+  .editor {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .editor{
+    font-size: 22px;
+  }
+
+  .line p {
+    line-break: anywhere;
+  }
+}
+
+
 .line {
-  font-size: 72px;
-  line-height: 1.5em;
-  width: 100vw;
+  width: 100%;
   display: grid;
-  grid-template-columns: 3em 1fr;
+  grid-template-columns: 10vw 1fr;
   gap: 1em;
 }
 
 .line p:hover {
-  background: lightblue;
+  background: var(--nvim-gray)
 }
 
 .line p {
-  display: inline;
+  padding-right: 1em;
   margin: 0;
 }
 
 .line .number {
+  min-width: 1.5em;
   text-align: right;
   font-size: 0.9em;
+  color: var(--nvim-gray)
 }
 
 .file {
   padding-left: 1em;
-  color:black;
+}
+
+.file::before{
+  content: "~";
+  position: relative;
+  top: 0.1em;
+  right: 0.5em;
+  color: var(--nvim-blue); 
 }
 
 .folder {
-  color: cyan;
+  color: var(--nvim-blue)
 }
 
-.side-panel {
-  margin: 0;
-  padding: 0 1em 0 0;
-  text-align: right;
-  overflow: hidden;
-  line-height: 1.5rem;
+.file:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  text-decoration-line: none;
+  color: var(--nvim-text);
 }

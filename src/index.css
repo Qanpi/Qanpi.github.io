@@ -1,69 +1,111 @@
+:root {
+  --nvim-blue: #61AFEF;
+  --nvim-background: #282C34;
+  --nvim-white: #dedede;
+  --nvim-gray: #4D535F;
+  --nvim-light-gray: rgb(160, 160, 160);
+  --nvim-orange: #ebb145;
+  --nvim-green: #85b175;
+}
+
 body { 
   margin: 0;
   font-family: InputMono, "Cascadia Mono", Courier, monospace;
-  background: blue;
+  background: var(--nvim-background);
+  color: var(--nvim-white);
+}
+
+.experience {
+  font-size: 22px;
+}
+
+.green {
+  color: var(--nvim-green);
 }
 
 .tab-bar {
   width: 100vw;
   height: 50px;
-  background:lightblue;
+  background: #202020;
 
   box-sizing: border-box;
   display: flex;
   justify-content: left;
   padding-left: 10px;
+  padding-right: 10vw;
+  overflow: scroll;
   font-size: 16px;
   gap: 5px;
-  margin-bottom: 200px;
 }
 
-.tab-bar :first-child {
-  background: blue;
+.tab-bar #selected {
+  background: var(--nvim-background);
 }
 
 .tab {
-  min-width: 50px;
-  max-width: 250px;
-  background:lightblue;
+  position: relative;
+  min-width: 30px;
+  max-width: 200px;
   width: 100%;
 
-  display: flex;
+  padding: 10px;
   border-radius: 10px 10px 0 0;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  grid-template-columns: 1fr 30px;
+}
+
+.tab span {
+  text-align: center;
+  overflow: hidden;
 }
 
 .tab button {
+  font-size: 1em;
   width: 30px;
   height: 30px;
-  position: relative;
-  left: 30%;
+  border: 0;
+  background: none;
+  color: var(--nvim-white)
 }
 
 .footer {
-  height: 40px;
+  height: 30px;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background:gray;
+  background: #333841;
   position: sticky;
   bottom: 0;
-  font-size: 24px;
+  font-size: 18px;
+  overflow: hidden;
 }
 
-.guide {
-  background: green;
+.footer span {
+  white-space: nowrap;
+  overflow-x: hidden;
+  max-width: 25vw;
+}
+
+.footer > .left {
   display: flex;
-  justify-content: center;
+  gap: 1em;
   align-items: center;
-  width: 120px;
-  height: 100%;
 }
 
-.decor {
+.mode-indicator {
+  height: 30px;
+  background: var(--nvim-green);
+  color: var(--nvim-background);
+  padding: 0 5px 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.footer > .right {
   display: flex;
   gap: 30px;
+  padding-right: 1em;
 }
 

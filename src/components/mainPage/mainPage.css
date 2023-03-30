@@ -12,6 +12,6 @@
   }
 }
 
-.about-me {
-  margin-bottom: 1em;
+.emphasis {
+  color: var(--nvim-orange);
 }
