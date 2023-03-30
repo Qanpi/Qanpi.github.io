@@ -1,11 +1,13 @@
 .editor {
-  font-size: 60px;
+  font-size: 52px;
   line-height: 1.5em;
   padding-top: 15vmin;
   min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .editor {
     font-size: 36px;
   }
@@ -14,10 +16,6 @@
 @media screen and (max-width: 600px) {
   .editor{
     font-size: 22px;
-  }
-
-  .line p {
-    line-break: anywhere;
   }
 }
 
@@ -47,6 +45,7 @@
 
 .file {
   padding-left: 1em;
+  line-break: anywhere;
 }
 
 .file::before{

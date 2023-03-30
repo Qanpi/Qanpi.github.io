@@ -67,7 +67,6 @@ function Footer({filename}) {
   useEffect(() => {
     function handleScroll(ev) {
       const doc = ev.target.documentElement;
-      console.log(doc)
 
       setScrollY(doc.scrollTop);
       setPageHeight(doc.offsetHeight - doc.clientHeight);
