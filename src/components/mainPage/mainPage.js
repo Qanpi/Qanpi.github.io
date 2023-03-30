@@ -40,7 +40,7 @@ function TypeAnimationWrapper({ normalText, sequence }) {
   const ref = useRef(null);
   const { height, lineHeight } = useContainerDimensions(ref);
 
-  const computedHeight = ref.current ? height + lineHeight + "px" : "auto";
+  const computedHeight = ref.current ? height + lineHeight + 10 + "px" : "auto";
 
   return (
     <p style={{ height: computedHeight }}>
