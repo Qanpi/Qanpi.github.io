@@ -13,6 +13,7 @@ body {
   font-family: InputMono, "Cascadia Mono", Courier, monospace;
   background: var(--nvim-background);
   color: var(--nvim-white);
+  overflow: hidden;
 }
 
 .experience {
@@ -25,7 +26,7 @@ body {
 
 .tab-bar {
   width: 100vw;
-  height: 50px;
+  height: 45px;
   background: #202020;
 
   box-sizing: border-box;
@@ -38,6 +39,10 @@ body {
   gap: 5px;
 }
 
+.main-tab button {
+  display: none;
+}
+
 .tab-bar #selected {
   background: var(--nvim-background);
 }
@@ -47,8 +52,8 @@ body {
   min-width: 30px;
   max-width: 200px;
   width: 100%;
+  padding-left: 10px;
 
-  padding: 10px;
   border-radius: 10px 10px 0 0;
   display: grid;
   align-items: center;
@@ -109,3 +114,7 @@ body {
   padding-right: 1em;
 }
 
+.page {
+  height: calc(100vh - 75px);
+  overflow: scroll;
+}

@@ -2,8 +2,8 @@
   font-size: 52px;
   line-height: 1.5em;
   padding-top: 15vmin;
-  min-height: 100vh;
   max-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
