@@ -138,6 +138,7 @@ export default function MainPage(onLinkClick) {
       />
 
       <p></p>
+
       <p></p>
 
       <p className="folder">portfolio/</p>
@@ -165,6 +166,9 @@ export default function MainPage(onLinkClick) {
       <p></p>
 
       <p>Currently, I am looking to expand my <span className="emphasis">professional expertise.</span></p>
+      <a href="./CV2023_lite.pdf" rel="noreferrer">
+        <p className="file">my CV</p>
+      </a>
 
       <p></p>
       <p className="folder">experience/</p>
