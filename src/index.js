@@ -26,7 +26,7 @@ function Footer({ filename, pageRef }) {
   const [scrollY, setScrollY] = useState(0);
   const [pageHeight, setPageHeight] = useState(1);
   const percentage = Math.round((scrollY / pageHeight) * 100);
-  const indicator = pageHeight !== 0 ? percentage + "%" : "";
+  const indicator = pageHeight > 0 ? percentage + "%" : "";
 
   useEffect(() => {
     function handleScroll(ev) {
@@ -74,7 +74,6 @@ function Window() {
 
   function handleTabOpen(title, page) {
     setOpenPages((prevState) => {
-      console.log(tab, pageRef.current.scrollTop);
       prevState[tab]["y"] = pageRef.current.scrollTop;
       if (title in prevState) return prevState;
       else return { ...prevState, [title]: { page: page, y: 0 } };
