@@ -26,13 +26,14 @@ function Footer({ filename, pageRef }) {
   const [scrollY, setScrollY] = useState(0);
   const [pageHeight, setPageHeight] = useState(1);
   const percentage = Math.round((scrollY / pageHeight) * 100);
+  const indicator = pageHeight !== 0 ? percentage + "%" : "";
 
   useEffect(() => {
     function handleScroll(ev) {
       const el = ev.target;
 
       setScrollY(el.scrollTop);
-      setPageHeight(el.scrollTopMax);
+      setPageHeight(el.scrollHeight - el.clientHeight);
     }
 
     pageRef.current.addEventListener("scroll", handleScroll);
@@ -42,16 +43,12 @@ function Footer({ filename, pageRef }) {
 
   return (
     <div className="footer">
-      <div className="left">
         <div className="mode-indicator">
           <span>NORMAL</span>
         </div>
         <span>{filename}</span>
-      </div>
-      <div className="right">
-        <span>unix | netrw</span>
-        <span>{percentage}%</span>
-      </div>
+
+        <span>{indicator}</span>
     </div>
   );
 }

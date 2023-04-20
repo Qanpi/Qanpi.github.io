@@ -13,7 +13,6 @@ body {
   font-family: InputMono, "Cascadia Mono", Courier, monospace;
   background: var(--nvim-background);
   color: var(--nvim-white);
-  overflow: hidden;
 }
 
 .experience {
@@ -77,44 +76,33 @@ body {
 .footer {
   height: 30px;
   width: 100vw;
-  display: flex;
+  display: grid;
+  grid-template-columns: 80px 1fr 50px;
+  gap: 10px;
   align-items: center;
-  justify-content: space-between;
   background: #333841;
   position: sticky;
   bottom: 0;
   font-size: 18px;
-  overflow: hidden;
 }
 
 .footer span {
   white-space: nowrap;
   overflow-x: hidden;
-  max-width: 25vw;
-}
-
-.footer > .left {
-  display: flex;
-  gap: 1em;
-  align-items: center;
 }
 
 .mode-indicator {
-  height: 30px;
+  height: 100%;
   background: var(--nvim-green);
   color: var(--nvim-background);
   padding: 0 5px 0 5px;
   display: flex;
   align-items: center;
-}
-
-.footer > .right {
-  display: flex;
-  gap: 30px;
-  padding-right: 1em;
+  justify-content: center;
 }
 
 .page {
-  height: calc(100vh - 75px);
+  height: calc(100vh - 75px); /*fallback*/
+  height: calc(100dvh - 75px);
   overflow: scroll;
 }

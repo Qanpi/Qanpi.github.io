@@ -14,10 +14,14 @@ function Nordea() {
         As part of my responsibilities, created material about entrepreneurship.
       </p>
       <p></p>
-      <p>
-        Also appearead on{" "}
-        <span className="emphasis">national TV and Nordea social media.</span>
-      </p>
+
+      <a target="_blank" rel="noreferrer" href="https://www.mtvuutiset.fi/artikkeli/etatyo-sai-rinnalleen-etatetin-jotta-korona-ajan-koululaisetkin-paasevat-tyoharjoitteluun-loistavia-tuloksia-vaikka-yksi-asia-harmittaa/7958856">
+        <p>
+          Also appearead on
+          <span className="emphasis"> national TV and Nordea social media.</span>
+        </p>
+      </a>
+
       <p></p>
       <p>Plus, met and talked to some great people.</p>
     </Editor>
@@ -193,6 +197,7 @@ export default function MainPage(onLinkClick) {
       <a href="https://github.com/Qanpi" rel="noreferrer" target="_blank">
         <p className="file">github</p>
       </a>
+      <p></p>
     </Editor>
   );
 }
