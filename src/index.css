@@ -10,6 +10,7 @@
 
 body { 
   margin: 0;
+  padding: 0;
   font-family: InputMono, "Cascadia Mono", Courier, monospace;
   background: var(--nvim-background);
   color: var(--nvim-white);
@@ -24,8 +25,11 @@ body {
 }
 
 .tab-bar {
-  width: 100vw;
+  width: 100%;
   height: 45px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background: #202020;
 
   box-sizing: border-box;
@@ -33,7 +37,6 @@ body {
   justify-content: left;
   padding-left: 10px;
   padding-right: 10vw;
-  overflow: scroll;
   font-size: 16px;
   gap: 5px;
 }
@@ -75,7 +78,7 @@ body {
 
 .footer {
   height: 30px;
-  width: 100vw;
+  width: 100%;
   display: grid;
   grid-template-columns: 80px 1fr 50px;
   gap: 10px;
@@ -101,8 +104,3 @@ body {
   justify-content: center;
 }
 
-.page {
-  height: calc(100vh - 75px); /*fallback*/
-  height: calc(100dvh - 75px);
-  overflow: scroll;
-}

@@ -122,6 +122,14 @@ function TypeAnimationWrapper({ normalText, sequence }) {
   );
 }
 
+function Link ({url, children, target}) {
+  return (
+      <a href={url} rel="noreferrer noopener" target={target}>
+        <p className="file">{children}</p>
+      </a>
+  );
+}
+
 
 export default function MainPage(onLinkClick) {
   const interests = [
@@ -132,7 +140,10 @@ export default function MainPage(onLinkClick) {
     "competitive programming",
     "computer vision",
   ];
+
   const interestsSequence = interests.map((t, i) => [" " + t, 1000]).flat();
+
+  const baseUrl = "https://qanpi.github.io/";
 
   return (
     <Editor >
@@ -142,37 +153,41 @@ export default function MainPage(onLinkClick) {
       />
 
       <p></p>
-
       <p></p>
 
       <p className="folder">portfolio/</p>
-      <p className="file" onClick={() => onLinkClick("iqArrowsSolver.java", GithubPage("iqArrowsSolver"))}>
+
+      <Link url={baseUrl + "iqArrowsSolver"}>
         iqArrowsSolver<span className="green">.java</span>
-      </p>
-      <p className="file" onClick={() => onLinkClick("aoc2022.clj", GithubPage("aoc2022"))}>
+      </Link>
+
+      <Link url={baseUrl + "aoc2022"}>
         aoc2022<span className="green">.clj</span>
-      </p>
-      <p className="file" onClick={() => onLinkClick("stega.py", GithubPage("stega"))}>
+      </Link>
+
+      <Link url={baseUrl + "stega"}>
         stega<span className="green">.py</span>
-      </p>
-      <p className="file" onClick={() => onLinkClick("inception.java", GithubPage("inception"))}>
+      </Link>
+
+      <Link url={baseUrl + "inception"}>
         inception<span className="green">.java</span>
-      </p>
-      <p className="file" onClick={() => onLinkClick("datatähti2023.cpp", GithubPage("datatahti2023"))}>
+      </Link>
+
+      <Link url={baseUrl + "datatahti2023"}>
         datatähti2023<span className="green">.cpp</span>
-      </p>
+      </Link>
   
-      <a href="http://github.com/Qanpi" rel="noreferrer" target="_blank">
-        <p className="file">...</p>
-      </a>
+      <Link url="http://github.com/Qanpi">
+        ...
+      </Link>
 
       <p></p>
       <p></p>
 
       <p>Currently, I am looking to expand my <span className="emphasis">professional expertise.</span></p>
-      <a href="./CV2023_lite.pdf" rel="noreferrer">
-        <p className="file">my CV</p>
-      </a>
+      <Link url="./CV2023_lite.pdf" target="_blank">
+        my CV
+      </Link>
 
       <p></p>
       <p className="folder">experience/</p>
@@ -188,15 +203,18 @@ export default function MainPage(onLinkClick) {
       <p></p>
 
       <p className="folder">contacts/</p>
-      <a href="mailto:aleksei.terin@outlook.com">
-        <p className="file">aleksei.terin@outlook.com</p>
-      </a>
-      <a href="https://www.linkedin.com/in/aleksei-terin/" rel="noreferrer" target="_blank">
-        <p className="file">linkedIn</p>
-      </a>
-      <a href="https://github.com/Qanpi" rel="noreferrer" target="_blank">
-        <p className="file">github</p>
-      </a>
+      <Link url="mailto:aleksei.terin@outlook.com">
+        aleksei.terin@outlook.com
+      </Link>
+
+      <Link url="https://www.linkedin.com/in/aleksei-terin/" target="_blank">
+        linkedIn
+      </Link>
+
+      <Link url="https://github.com/Qanpi" target="_blank">
+        github
+      </Link>
+
       <p></p>
     </Editor>
   );

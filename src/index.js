@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import MainPage from "./components/mainPage/mainPage";
 import GithubPage from "./components/githubPage/githubPage";
 import Editor from "./components/editor/editor";
+import { BrowserRouter } from "react-router-dom";
 
 function TabBar({ titles, selected, onTabOpen, onTabClose }) {
   const tabs = titles.map((t, i) => (
@@ -22,24 +23,25 @@ function TabBar({ titles, selected, onTabOpen, onTabClose }) {
   return <div className="tab-bar">{tabs}</div>;
 }
 
-function Footer({ filename, pageRef }) {
+function Footer({ filename, docEl }) {
   const [scrollY, setScrollY] = useState(0);
-  const [pageHeight, setPageHeight] = useState(1);
-  const percentage = Math.round((scrollY / pageHeight) * 100);
-  const indicator = pageHeight > 0 ? percentage + "%" : "";
+  const pageHeight = docEl.scrollHeight - docEl.clientHeight;
+  const percentage = pageHeight > 0 ? Math.round((scrollY / pageHeight) * 100) : 0;
 
   useEffect(() => {
     function handleScroll(ev) {
-      const el = ev.target;
+      const el = ev.target.documentElement;
+      console.log(el)
 
       setScrollY(el.scrollTop);
-      setPageHeight(el.scrollHeight - el.clientHeight);
     }
 
-    pageRef.current.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => pageRef.current.removeEventListener("scroll", handleScroll);
-  });
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    };
+  } );
 
   return (
     <div className="footer">
@@ -48,7 +50,7 @@ function Footer({ filename, pageRef }) {
         </div>
         <span>{filename}</span>
 
-        <span>{indicator}</span>
+        <span>{percentage + "%"}</span>
     </div>
   );
 }
@@ -64,17 +66,19 @@ function Window() {
   const page = openPages[tab]["page"];
 
   const pageRef = useRef(null);
+  const docEl = window.document.documentElement;
 
   useLayoutEffect(() => {
     if (pageRef.current) {
       const weirdOffset = tab === "main" ? 72 : 0; //very botched fix for some autoscrolling weirdness 
-      pageRef.current.scrollTo(0, openPages[tab]["y"] - weirdOffset);
+      docEl.scrollTo(0, openPages[tab]["y"] - weirdOffset);
     }
   }, [tab]);
 
   function handleTabOpen(title, page) {
     setOpenPages((prevState) => {
-      prevState[tab]["y"] = pageRef.current.scrollTop;
+      prevState[tab]["y"] = docEl.scrollTop;
+      console.log(prevState)
       if (title in prevState) return prevState;
       else return { ...prevState, [title]: { page: page, y: 0 } };
     });
@@ -116,7 +120,7 @@ function Window() {
         {page}
       </div>
 
-      <Footer filename={tab} pageRef={pageRef} />
+      <Footer filename={tab} docEl={docEl} />
     </>
   );
 }
@@ -125,7 +129,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <Window />
+      <Window />
   </React.StrictMode>
 );
 
