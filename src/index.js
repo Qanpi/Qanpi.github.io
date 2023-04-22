@@ -25,7 +25,7 @@ function TabBar({ titles, selected, onTabOpen, onTabClose }) {
 
 function Footer({ filename, docEl }) {
   const [scrollY, setScrollY] = useState(0);
-  const pageHeight = docEl.scrollHeight - docEl.clientHeight;
+  const pageHeight = docEl.scrollHeight - window.innerHeight;
   const percentage = pageHeight > 0 ? Math.round((scrollY / pageHeight) * 100) : 0;
 
   useEffect(() => {
@@ -70,8 +70,7 @@ function Window() {
 
   useLayoutEffect(() => {
     if (pageRef.current) {
-      const weirdOffset = tab === "main" ? 72 : 0; //very botched fix for some autoscrolling weirdness 
-      docEl.scrollTo(0, openPages[tab]["y"] - weirdOffset);
+      docEl.scrollTo(0, openPages[tab]["y"]);
     }
   }, [tab]);
 

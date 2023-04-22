@@ -24,6 +24,7 @@ function Nordea() {
 
       <p></p>
       <p>Plus, met and talked to some great people.</p>
+      <p></p>
     </Editor>
   );
 }
@@ -41,6 +42,7 @@ function Slush() {
       <p>+ great merch :)</p>
       <p></p>
       <p>Planning to apply for position as Group Lead next season.</p>
+      <p></p>
     </Editor>
   );
 }
@@ -65,6 +67,7 @@ function Rovio() {
         <span className="emphasis">The people at Rovio</span>, and the
         discussions we shared, were undoubtedly the best part of it, though.
       </p>
+      <p></p>
     </Editor>
   );
 }
