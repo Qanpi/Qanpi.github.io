@@ -142,6 +142,7 @@ export default function MainPage(onLinkClick) {
     "AI/ML",
     "competitive programming",
     "computer vision",
+    "game development"
   ];
 
   const interestsSequence = interests.map((t, i) => [" " + t, 1000]).flat();
