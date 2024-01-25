@@ -161,8 +161,8 @@ export default function MainPage(onLinkClick) {
 
       <p className="folder">portfolio/</p>
 
-      <Link url={baseUrl + "copa"}>
-        inception<span className="green">.ts</span>
+      <Link url={"https://github.com/Qanpi/copa"}>
+        copa<span className="green">.ts</span>
       </Link>
 
       <Link url={baseUrl + "iqArrowsSolver"}>
