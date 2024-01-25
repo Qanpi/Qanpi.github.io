@@ -161,6 +161,10 @@ export default function MainPage(onLinkClick) {
 
       <p className="folder">portfolio/</p>
 
+      <Link url={baseUrl + "copa"}>
+        inception<span className="green">.ts</span>
+      </Link>
+
       <Link url={baseUrl + "iqArrowsSolver"}>
         iqArrowsSolver<span className="green">.java</span>
       </Link>
@@ -171,10 +175,6 @@ export default function MainPage(onLinkClick) {
 
       <Link url={baseUrl + "stega"}>
         stega<span className="green">.py</span>
-      </Link>
-
-      <Link url={baseUrl + "inception"}>
-        inception<span className="green">.java</span>
       </Link>
 
       <Link url={baseUrl + "datatahti2023"}>
@@ -189,7 +189,7 @@ export default function MainPage(onLinkClick) {
       <p></p>
 
       <p>Currently, I am looking to expand my <span className="emphasis">professional expertise.</span></p>
-      <Link url="./CV2023_lite.pdf" target="_blank">
+      <Link url="./CV2024.pdf" target="_blank">
         my CV
       </Link>
 
