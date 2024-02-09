@@ -14,6 +14,7 @@ function TabBar({ titles, selected, onTabOpen, onTabClose }) {
       className={"tab" + (t === "main" ? " main-tab" : "")}
       id={selected === t ? "selected" : ""}
       onClick={() => onTabOpen(t, null)}
+      style={{paddingRight: "3px"}}
     >
       <span>{t}</span>
       <button onClick={(ev) => onTabClose(ev, t)}>✕</button>

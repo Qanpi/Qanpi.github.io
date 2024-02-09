@@ -1,5 +1,5 @@
 .editor {
-  font-size: 52px;
+  font-size: 32px;
   line-height: 1.5em;
   padding-top: 15vmin;
   min-height: 100vh;
@@ -66,4 +66,9 @@ a {
   text-decoration: none;
   text-decoration-line: none;
   color: var(--nvim-text);
+} 
+
+p > a {
+  text-decoration: underline;
+  color: var(--nvim-blue);
 }
